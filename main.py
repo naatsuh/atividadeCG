@@ -1,9 +1,15 @@
 import PySimpleGUI as sg
 import matplotlib.pyplot as plt
 
+from telaGrafico import TelaGrafico
+
 class TelaPython:
 
+
+
     def __init__(self):
+
+        self.grafico = TelaGrafico ()
         sg.change_look_and_feel('Darkamber')
         #Layout
         layoutDados = [
@@ -114,20 +120,5 @@ class TelaPython:
                 #plt.show()
                 plt.savefig('./graphic')
 
-                sg.change_look_and_feel('Darkamber')
-                # Layout
-                layoutg = [
-                    [sg.Image(r'./graphic.png')],
-                    [sg.Cancel('Sair', size=(10, 1), font='Arial-black')]
-                ]
-                # Janela
-                window = sg.Window('Atividade Computação Gráfica: Os 4 pontos').layout(layoutg)
-                # Extrair dados da tela
-                # self.button, self.values = janela.Read()
-                while True:
-                    event, values = window.read()
-                    if event is None or event == 'Sair':
-                        break
-                window.close()
-
+                self.grafico.mostragrafico()
 tela = TelaPython()
